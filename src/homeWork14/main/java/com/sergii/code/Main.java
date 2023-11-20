@@ -31,6 +31,14 @@ public class Main {
             System.out.println(user.getFirstName() + " " + user.getSecondName() + " - " + user.getAge());
         }
 
+        boolean allOver18 = areAllUsersOver18(userList);
+
+        if (allOver18) {
+            System.out.println("All users are over 18 years old.");
+        } else {
+            System.out.println("Not all users are over 18 years old.");
+        }
+
     }
 
     public static List<User> sortByAge(List<User> userList) {
@@ -57,6 +65,10 @@ public class Main {
         Collections.sort(userList, Comparator
                 .comparing(User::getFirstName)
                 .thenComparing(User::getAge));
+    }
+
+    public static boolean areAllUsersOver18(List<User> userList) {
+        return userList.stream().allMatch(user -> user.getAge() > 18);
     }
 
 }

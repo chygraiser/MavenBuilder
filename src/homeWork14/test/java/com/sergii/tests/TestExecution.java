@@ -29,7 +29,7 @@ public class TestExecution {
         }
 
 
-    @Test
+    @RepeatedTest(10)
     public void checkSortByAge() {
         List<User> userList = new ArrayList<>();
 
@@ -198,6 +198,50 @@ public class TestExecution {
         }
 
     }*/
+
+    @Nested
+    class TestExecutionSubPointF {
+
+        @BeforeEach
+        public void beforeTestF() {
+            log.info("TestExecutionSubPointF - Test was started");
+        }
+
+        @Test
+        void checkAreAllUsersOver18() {
+            List<User> userList = new ArrayList<>();
+
+            userList.add(new User("Lionel", "Messi", 32));
+            userList.add(new User("Pele", "Pele", 88));
+            userList.add(new User("Diego", "Maradona", 64));
+            userList.add(new User("Cristiano", "Ronaldo", 33));
+            userList.add(new User("Johan", "Cruyff", 57));
+            userList.add(new User("Zinedine", "Zidane", 48));
+            userList.add(new User("Gerd", "Muller", 62));
+            userList.add(new User("Ronaldo", "Nazario", 46));
+            userList.add(new User("Alfredo", "Stefano", 50));
+            userList.add(new User("Michel", "Platini", 72));
+
+            log.info("TestExecutionSubPointF - List of users was created");
+
+            List<User> userListUnder18 = new ArrayList<>();
+            userListUnder18.add(new User("Young", "Player", 16));
+            userListUnder18.add(new User("Teen", "Player", 17));
+
+            log.info("TestExecutionSubPointF - List of users under 18 was created");
+
+            Assertions.assertFalse(Main.areAllUsersOver18(userListUnder18), "Not all users in the list are over 18");
+
+            log.info("TestExecutionSubPointF - Method checkAreAllUsersOver18 was tested and test is passed");
+        }
+
+        @AfterEach
+        public void afterTestF() {
+            log.info("TestExecutionSubPointF - Test was finished");
+        }
+
+
+    }
 
 
 
