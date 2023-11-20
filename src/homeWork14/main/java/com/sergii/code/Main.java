@@ -30,6 +30,7 @@ public class Main {
         for (User user : sortedByAge) {
             System.out.println(user.getFirstName() + " " + user.getSecondName() + " - " + user.getAge());
         }
+
     }
 
     public static List<User> sortByAge(List<User> userList) {
@@ -51,4 +52,11 @@ public class Main {
 
         return (double) totalAge / userList.size();
     }
+
+    public static void sortByFirstNameAndAge(List<User> userList) {
+        Collections.sort(userList, Comparator
+                .comparing(User::getFirstName)
+                .thenComparing(User::getAge));
+    }
+
 }

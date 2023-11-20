@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.sergii.code.Main.calculateAverageAge;
+import static org.junit.Assert.*;
 
 public class TestExecution {
 
@@ -73,7 +74,7 @@ public class TestExecution {
         }
 
         @Test
-        public void testCalculateAverageAge() {
+        public void checkCalculateAverageAge() {
             List<User> userList = new ArrayList<>();
             userList.add(new User("Lionel", "Messi", 32));
             userList.add(new User("Pele", "Pele", 88));
@@ -86,9 +87,15 @@ public class TestExecution {
             userList.add(new User("Alfredo", "Stefano", 50));
             userList.add(new User("Michel", "Platini", 72));
 
+            log.info("TestExecutionSubPointC - List of users was created");
+
             double averageAge = Main.calculateAverageAge(userList);
 
+            log.info("TestExecutionSubPointC - Average Age of users was calculated");
+
             double expectedAverage = (32 + 88 + 64 + 33 + 57 + 48 + 62 + 46 + 50 + 72) / 10.0;
+
+            log.info("TestExecutionSubPointC - Expected Average Age of users was calculated");
 
             Assertions.assertEquals(expectedAverage, averageAge,"Test is failed");
 
@@ -101,6 +108,101 @@ public class TestExecution {
         }
 
     }
+
+    @Nested
+    class TestExecutionSubPointD {
+
+        @BeforeEach
+        public void beforeTestD() {
+            log.info("TestExecutionSubPointD - Test was started");
+        }
+
+        @Test
+
+        public void checkSortByFirstNameAndAge() {
+            List<User> userList = new ArrayList<>();
+            userList.add(new User("Lionel", "Messi", 32));
+            userList.add(new User("Pele", "Pele", 88));
+            userList.add(new User("Diego", "Maradona", 64));
+            userList.add(new User("Cristiano", "Ronaldo", 33));
+            userList.add(new User("Johan", "Cruyff", 57));
+            userList.add(new User("Zinedine", "Zidane", 48));
+            userList.add(new User("Gerd", "Muller", 62));
+            userList.add(new User("Ronaldo", "Nazario", 46));
+            userList.add(new User("Alfredo", "Stefano", 50));
+            userList.add(new User("Michel", "Platini", 72));
+
+            log.info("TestExecutionSubPointD - List of users was created");
+
+            Main.sortByFirstNameAndAge(userList);
+
+            log.info("TestExecutionSubPointD - List of users was sorted");
+
+            Assertions.assertEquals("Alfredo", userList.get(0).getFirstName(), "Test is failed");
+            Assertions.assertEquals("Cristiano", userList.get(1).getFirstName(), "Test is failed");
+            Assertions.assertEquals("Diego", userList.get(2).getFirstName(), "Test is failed");
+            Assertions.assertEquals("Gerd", userList.get(3).getFirstName(), "Test is failed");
+
+            log.info("TestExecutionSubPointD - Method sortByFirstNameAndAge was tested and test is passed");
+
+        }
+
+        @AfterEach
+        public void afterTestD() {
+            log.info("TestExecutionSubPointD - Test was finished");
+        }
+
+
+
+    }
+
+    /*@Nested
+    class TestExecutionSubPointE {
+
+        @BeforeEach
+        public void beforeTestE() {
+            log.info("TestExecutionSubPointE - Test was started");
+        }
+
+        @Test
+        public void testHasUsersWithSALastName() {
+            List<User> userList = new ArrayList<>();
+            userList.add(new User("Lionel", "Messi", 32));
+            userList.add(new User("Pele", "Pele", 88));
+            userList.add(new User("Diego", "Maradona", 64));
+            userList.add(new User("Cristiano", "Ronaldo", 33));
+            userList.add(new User("Johan", "Cruyff", 57));
+            userList.add(new User("Zinedine", "Zidane", 48));
+            userList.add(new User("Gerd", "Muller", 62));
+            userList.add(new User("Ronaldo", "Nazario", 46));
+            userList.add(new User("Alfredo", "Stefano", 50));
+            userList.add(new User("Michel", "Platini", 72));
+
+            log.info("TestExecutionSubPointE - List of users was created");
+
+            // Test when there are users with last names starting with 'S' or 'A'
+            Assertions.assertEquals(false, hasUsersWithSALastName(userList), "Users with SA are not presented");
+           *//* Assertions.assertEquals(false, Main.hasUsersWithSALastName(userList), "Users with SA are presented");*//*
+
+            // Modify the list so that there are no users with last names starting with 'S' or 'A'
+            *//*userList.get(0).setSecondName("Allegri");  // Changing Messi to Doe
+            userList.get(1).setSecondName("Shevchecko");  // Changing Pele to Doe*//*
+
+            // Test when there are no users with last names starting with 'S' or 'A'
+            *//*Assertions.assertFalse(Main.hasUsersWithSALastName(userList));*//*
+        }
+
+        @AfterEach
+        public void afterTestE() {
+            log.info("TestExecutionSubPointE - Test was finished");
+        }
+
+    }*/
+
+
+
+
+
 
     @AfterAll
     public static void afterTest(){
