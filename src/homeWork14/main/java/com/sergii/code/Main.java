@@ -38,4 +38,17 @@ public class Main {
         return sortedList;
     }
 
+    public static double calculateAverageAge(List<User> userList) {
+        if (userList.isEmpty()) {
+            return 0;
+        }
+
+        int totalAge = 0;
+
+        for (User user : userList) {
+            totalAge += user.getAge();
+        }
+
+        return (double) totalAge / userList.size();
+    }
 }
