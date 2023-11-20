@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.sergii.code.Main.calculateAverageAge;
+import static com.sergii.code.Main.hasUsersWithSandAinLastName;
 import static org.junit.Assert.*;
 
 public class TestExecution {
@@ -156,7 +157,7 @@ public class TestExecution {
 
     }
 
-    /*@Nested
+    @Nested
     class TestExecutionSubPointE {
 
         @BeforeEach
@@ -165,7 +166,7 @@ public class TestExecution {
         }
 
         @Test
-        public void testHasUsersWithSALastName() {
+        public void checkHasUsersWithSandAinLastName() {
             List<User> userList = new ArrayList<>();
             userList.add(new User("Lionel", "Messi", 32));
             userList.add(new User("Pele", "Pele", 88));
@@ -180,16 +181,10 @@ public class TestExecution {
 
             log.info("TestExecutionSubPointE - List of users was created");
 
-            // Test when there are users with last names starting with 'S' or 'A'
-            Assertions.assertEquals(false, hasUsersWithSALastName(userList), "Users with SA are not presented");
-           *//* Assertions.assertEquals(false, Main.hasUsersWithSALastName(userList), "Users with SA are presented");*//*
+            Assertions.assertEquals(true, hasUsersWithSandAinLastName(userList), "Users with SA are presented");
 
-            // Modify the list so that there are no users with last names starting with 'S' or 'A'
-            *//*userList.get(0).setSecondName("Allegri");  // Changing Messi to Doe
-            userList.get(1).setSecondName("Shevchecko");  // Changing Pele to Doe*//*
+            log.info("TestExecutionSubPointE - Method hasUsersWithSALastName was tested and test is passed");
 
-            // Test when there are no users with last names starting with 'S' or 'A'
-            *//*Assertions.assertFalse(Main.hasUsersWithSALastName(userList));*//*
         }
 
         @AfterEach
@@ -197,7 +192,7 @@ public class TestExecution {
             log.info("TestExecutionSubPointE - Test was finished");
         }
 
-    }*/
+    }
 
     @Nested
     class TestExecutionSubPointF {
@@ -243,17 +238,10 @@ public class TestExecution {
 
     }
 
-
-
-
-
-
     @AfterAll
     public static void afterTest(){
         log.info("Smoke Test was finished without Errors");
     }
-
-
 
 }
 

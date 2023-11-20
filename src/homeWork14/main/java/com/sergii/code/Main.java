@@ -39,6 +39,14 @@ public class Main {
             System.out.println("Not all users are over 18 years old.");
         }
 
+        boolean hasUsersWithSA = hasUsersWithSandAinLastName(userList);
+
+        if (hasUsersWithSA) {
+            System.out.println("There are users with last names starting with 'S' or 'A'.");
+        } else {
+            System.out.println("No users with last names starting with 'S' or 'A'.");
+        }
+
     }
 
     public static List<User> sortByAge(List<User> userList) {
@@ -69,6 +77,16 @@ public class Main {
 
     public static boolean areAllUsersOver18(List<User> userList) {
         return userList.stream().allMatch(user -> user.getAge() > 18);
+    }
+
+    public static boolean hasUsersWithSandAinLastName(List<User> userList) {
+        for (User user : userList) {
+            String lastName = user.getSecondName().toLowerCase();
+            if (lastName.startsWith("s") || lastName.startsWith("a")) {
+                return true; // Found a user with last name starting with 'S' or 'A'
+            }
+        }
+        return false; // No users with last names starting with 'S' or 'A'
     }
 
 }
