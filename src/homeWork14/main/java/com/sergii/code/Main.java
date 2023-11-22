@@ -80,13 +80,12 @@ public class Main {
     }
 
     public static boolean hasUsersWithSandAinLastName(List<User> userList) {
-        for (User user : userList) {
-            String lastName = user.getSecondName().toLowerCase();
-            if (lastName.startsWith("s") || lastName.startsWith("a")) {
-                return true; // Found a user with last name starting with 'S' or 'A'
+            for (User user : userList) {
+                String lastName = user.getSecondName().toLowerCase();
+                if (lastName.startsWith("s") || lastName.startsWith("a")) {
+                    return true;
+                }
             }
+            return false;
         }
-        return false; // No users with last names starting with 'S' or 'A'
-    }
-
 }

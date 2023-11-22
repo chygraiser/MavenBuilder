@@ -43,4 +43,8 @@ public class User {
                 ", age=" + age +
                 '}';
     }
+
+    public String toLowerCase() {
+        return null;
+    }
 }

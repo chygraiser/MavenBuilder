@@ -191,7 +191,15 @@ public class TestExecution {
 
             log.info("TestExecutionSubPointE - List of users was created");
 
-            Assertions.assertEquals(true, hasUsersWithSandAinLastName(userList), "Users with SA are presented");
+            Assertions.assertEquals(true, hasUsersWithSandAinLastName(userList), "Users with SA are not presented");
+
+            log.info("TestExecutionSubPointE - Positive test is passed");
+
+            userList.forEach(user -> user.setSecondName("NegativeTestSecondName"));
+
+            Assertions.assertEquals(false, hasUsersWithSandAinLastName(userList), "Users with SA are presented");
+
+            log.info("TestExecutionSubPointE - Negative test is passed");
 
             log.info("TestExecutionSubPointE - Method hasUsersWithSALastName was tested and test is passed");
 
