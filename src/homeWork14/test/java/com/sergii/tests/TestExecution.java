@@ -2,9 +2,13 @@ package com.sergii.tests;
 
 import com.sergii.code.Main;
 import com.sergii.code.User;
+import com.sergii.tests.data.ArgumentProviderClass;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,8 +78,11 @@ public class TestExecution {
             log.info("TestExecutionSubPointC - Test was started");
         }
 
-        @Test
-        public void checkCalculateAverageAge() {
+        @ParameterizedTest
+        @DisplayName(value = "Test average age")
+        @ArgumentsSource(ArgumentProviderClass.class)
+
+        public void checkCalculateAverageAge(double expectedAverageArg) {
             List<User> userList = new ArrayList<>();
             userList.add(new User("Lionel", "Messi", 32));
             userList.add(new User("Pele", "Pele", 88));
@@ -99,6 +106,9 @@ public class TestExecution {
             log.info("TestExecutionSubPointC - Expected Average Age of users was calculated");
 
             Assertions.assertEquals(expectedAverage, averageAge,"Test is failed");
+
+            log.info("TestExecutionSubPointC - Expected Average Age of users was calculated by Argument Provider Class");
+            Assertions.assertEquals(expectedAverageArg, averageAge,"Test is failed");
 
             log.info("TestExecutionSubPointC - Method testCalculateAverageAge was tested and test is passed");
         }
